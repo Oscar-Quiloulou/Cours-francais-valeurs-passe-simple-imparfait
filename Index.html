@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imparfait & Passé simple — Révisions 3e</title>
+<style>
+  :root{
+    --bg:#f5f4f0;
+    --card:#ffffff;
+    --ink:#23222b;
+    --muted:#6b6a78;
+    --primary:#5b4bdb;
+    --primary-dark:#4436b8;
+    --primary-soft:#ece9ff;
+    --accent:#e07b39;
+    --accent-soft:#fdeee2;
+    --good:#1f9d55;
+    --good-soft:#e3f6ec;
+    --bad:#d64545;
+    --bad-soft:#fdeaea;
+    --border:#e5e3de;
+    --radius:16px;
+    --shadow:0 2px 4px rgba(35,34,43,.04), 0 8px 24px rgba(35,34,43,.06);
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    font-size:16px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    background:linear-gradient(135deg,#5b4bdb 0%,#7a4bd0 50%,#b04bc4 100%);
+    color:#fff;
+    padding:38px 20px 34px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 20% 10%, rgba(255,255,255,.18), transparent 45%),
+               radial-gradient(circle at 85% 80%, rgba(255,255,255,.12), transparent 40%);
+    pointer-events:none;
+  }
+  header h1{
+    margin:0 0 8px;
+    font-size:clamp(1.5rem,4vw,2.2rem);
+    letter-spacing:-.5px;
+    position:relative;
+  }
+  header p{
+    margin:0;
+    opacity:.9;
+    font-size:.98rem;
+    position:relative;
+  }
+  .badge{
+    display:inline-block;
+    background:rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.35);
+    padding:3px 12px;
+    border-radius:999px;
+    font-size:.78rem;
+    font-weight:600;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    position:relative;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(245,244,240,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    padding:10px 12px;
+  }
+  .tabs{
+    display:flex;
+    gap:6px;
+    max-width:1000px;
+    margin:0 auto;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{
+    flex:0 0 auto;
+    border:1px solid transparent;
+    background:transparent;
+    color:var(--muted);
+    font:inherit;
+    font-weight:600;
+    font-size:.92rem;
+    padding:9px 16px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:.18s;
+    white-space:nowrap;
+  }
+  .tab:hover{color:var(--ink);background:#ecebe6;}
+  .tab.active{
+    background:var(--primary);
+    color:#fff;
+    box-shadow:0 4px 12px rgba(91,75,219,.28);
+  }
+
+  /* ---------- LAYOUT ---------- */
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:26px 16px 80px;
+  }
+  .panel{display:none;animation:fade .25s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 22px 24px;
+    margin-bottom:20px;
+    box-shadow:var(--shadow);
+  }
+  .card h2{
+    margin:0 0 4px;
+    font-size:1.22rem;
+    letter-spacing:-.2px;
+  }
+  .card h2 .emoji{margin-right:8px;}
+  .card .sub{
+    margin:0 0 18px;
+    color:var(--muted);
+    font-size:.9rem;
+  }
+  .card h3{
+    font-size:1rem;
+    margin:20px 0 8px;
+    color:var(--primary-dark);
+  }
+
+  p{margin:0 0 12px;}
+
+  /* ---------- VALEURS ---------- */
+  .valeurs{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:12px;
+  }
+  .valeur{
+    border:1px solid var(--border);
+    border-left:4px solid var(--primary);
+    border-radius:10px;
+    padding:12px 14px;
+    background:#fbfbfd;
+  }
+  .valeur strong{
+    display:block;
+    font-size:.93rem;
+    margin-bottom:3px;
+  }
+  .valeur span{
+    font-size:.88rem;
+    color:var(--muted);
+    display:block;
+  }
+  .valeur em{
+    display:block;
+    margin-top:6px;
+    font-size:.85rem;
+    color:var(--ink);
+    font-style:italic;
+    opacity:.75;
+  }
+  .valeur.ps{border-left-color:var(--accent);}
+
+  /* ---------- TABLEAUX ---------- */
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.93rem;
+    min-width:320px;
+  }
+  th,td{
+    padding:9px 12px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
+  }
+  thead th{
+    background:#f7f6fb;
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    color:var(--muted);
+    font-weight:700;
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:#fafaff;}
+  td.form{font-weight:600;color:var(--primary-dark);}
+  td.pron{color:var(--muted);width:38%;}
+
+  /* ---------- CONJUGUEUR ---------- */
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-bottom:16px;
+  }
+  .chip{
+    border:1px solid var(--border);
+    background:#fff;
+    color:var(--ink);
+    font:inherit;
+    font-size:.87rem;
+    font-weight:600;
+    padding:6px 13px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:.15s;
+  }
+  .chip:hover{border-color:var(--primary);color:var(--primary);}
+  .chip.active{
+    background:var(--primary);
+    border-color:var(--primary);
+    color:#fff;
+  }
+  .chips.ps .chip.active{background:var(--accent);border-color:var(--accent);}
+  .chips.ps .chip:hover{border-color:var(--accent);color:var(--accent);}
+  .conj-note{
+    margin-top:12px;
+    font-size:.85rem;
+    color:var(--muted);
+  }
+  .conj-note b{color:var(--ink);}
+
+  /* ---------- ASTUCE ---------- */
+  .astuce{
+    background:var(--primary-soft);
+    border:1px solid #d9d3ff;
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:.92rem;
+    margin-top:16px;
+  }
+  .astuce.orange{background:var(--accent-soft);border-color:#f6d9c0;}
+  .astuce strong{display:block;margin-bottom:4px;}
+
+  /* ---------- TEXTE EXEMPLE ---------- */
+  .exemple{
+    background:#fbfaf7;
+    border:1px dashed var(--border);
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:1rem;
+    line-height:1.9;
+  }
+  .imp{color:var(--primary-dark);font-weight:700;background:var(--primary-soft);padding:1px 4px;border-radius:4px;}
+  .ps{color:#b45309;font-weight:700;background:var(--accent-soft);padding:1px 4px;border-radius:4px;}
+  .legende{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:12px;
+    font-size:.85rem;
+    color:var(--muted);
+  }
+  .legende span::before{
+    content:"";
+    display:inline-block;
+    width:11px;height:11px;
+    border-radius:3px;
+    margin-right:6px;
+    vertical-align:-1px;
+  }
+  .legende .l-imp::before{background:var(--primary);}
+  .legende .l-ps::before{background:var(--accent);}
+
+  /* ---------- QUIZ ---------- */
+  .quiz-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    margin-bottom:10px;
+  }
+  .quiz-score{color:var(--primary);}
+  .progress{
+    height:7px;
+    background:#e9e7e2;
+    border-radius:999px;
+    overflow:hidden;
+    margin-bottom:22px;
+  }
+  .progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,var(--primary),#b04bc4);
+    border-radius:999px;
+    transition:width .3s ease;
+  }
+  .quiz-text{
+    background:#f7f6fb;
+    border-left:4px solid var(--primary);
+    border-radius:8px;
+    padding:12px 15px;
+    margin-bottom:14px;
+    font-size:1rem;
+  }
+  .quiz-text b{color:var(--primary-dark);}
+  .quiz-question{
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .option{
+    text-align:left;
+    font:inherit;
+    font-size:.95rem;
+    background:#fff;
+    border:1.5px solid var(--border);
+    border-radius:11px;
+    padding:12px 16px;
+    cursor:pointer;
+    transition:.15s;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .option::before{
+    content:"";
+    flex:0 0 auto;
+    width:16px;height:16px;
+    border-radius:50%;
+    border:2px solid #cfcdc7;
+    transition:.15s;
+  }
+  .option:hover:not(:disabled){
+    border-color:var(--primary);
+    background:#faf9ff;
+  }
+  .option:hover:not(:disabled)::before{border-color:var(--primary);}
+  .option:disabled{cursor:default;}
+  .option.correct{
+    border-color:var(--good);
+    background:var(--good-soft);
+    font-weight:600;
+  }
+  .option.correct::before{
+    border-color:var(--good);
+    background:var(--good);
+    box-shadow:inset 0 0 0 3px var(--good-soft);
+  }
+  .option.wrong{
+    border-color:var(--bad);
+    background:var(--bad-soft);
+  }
+  .option.wrong::before{
+    border-color:var(--bad);
+    background:var(--bad);
+    box-shadow:inset 0 0 0 3px var(--bad-soft);
+  }
+
+  .feedback{
+    margin-top:18px;
+    padding:14px 16px;
+    border-radius:12px;
+    font-size:.92rem;
+    animation:fade .25s ease;
+  }
+  .feedback.ok{background:var(--good-soft);border:1px solid #b9e6cd;}
+  .feedback.ko{background:var(--bad-soft);border:1px solid #f3c9c9;}
+  .feedback strong{display:block;margin-bottom:5px;font-size:.98rem;}
+  .feedback p{margin:0;color:#3a3a45;}
+
+  .btn{
+    display:inline-block;
+    font:inherit;
+    font-weight:700;
+    font-size:.95rem;
+    border:none;
+    border-radius:11px;
+    padding:12px 24px;
+    cursor:pointer;
+    transition:.18s;
+    background:var(--primary);
+    color:#fff;
+    box-shadow:0 4px 14px rgba(91,75,219,.3);
+  }
+  .btn:hover{background:var(--primary-dark);transform:translateY(-1px);}
+  .btn.ghost{
+    background:#fff;
+    color:var(--primary);
+    border:1.5px solid var(--primary);
+    box-shadow:none;
+  }
+  .btn.ghost:hover{background:var(--primary-soft);transform:none;}
+  .btn-row{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;}
+
+  /* ---------- RESULTAT ---------- */
+  .resultat{text-align:center;padding:14px 0 6px;}
+  .score-big{
+    font-size:3.2rem;
+    font-weight:800;
+    line-height:1;
+    letter-spacing:-2px;
+    color:var(--primary);
+    margin-bottom:6px;
+  }
+  .score-big small{font-size:1.2rem;color:var(--muted);font-weight:600;}
+  .resultat h3{font-size:1.15rem;margin:0 0 8px;color:var(--ink);}
+  .resultat p{color:var(--muted);font-size:.93rem;max-width:420px;margin:0 auto 6px;}
+  .barre{
+    height:10px;
+    background:#e9e7e2;
+    border-radius:999px;
+    overflow:hidden;
+    max-width:340px;
+    margin:18px auto 4px;
+  }
+  .barre > div{
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--primary),#b04bc4);
+    transition:width .6s ease;
+  }
+
+  /* ---------- INTRO QUIZ ---------- */
+  .intro-quiz{text-align:center;padding:10px 0;}
+  .intro-quiz .ico{font-size:2.6rem;line-height:1;margin-bottom:8px;}
+  .intro-quiz h2{margin-bottom:8px;}
+  .intro-quiz p{color:var(--muted);max-width:460px;margin:0 auto 20px;font-size:.94rem;}
+
+  footer{
+    text-align:center;
+    padding:26px 16px 40px;
+    color:var(--muted);
+    font-size:.83rem;
+  }
+
+  @media (max-width:520px){
+    .card{padding:18px 16px 20px;}
+    .option{padding:11px 13px;font-size:.9rem;}
+    header{padding:28px 16px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Français · 3ᵉ</div>
+  <h1>L'imparfait & le passé simple</h1>
+  <p>Valeurs, conjugaisons et quiz pour tout réviser</p>
+</header>
+
+<nav>
+  <div class="tabs">
+    <button class="tab active" data-target="imparfait">L'imparfait</button>
+    <button class="tab" data-target="passe-simple">Le passé simple</button>
+    <button class="tab" data-target="comparer">Les deux ensemble</button>
+    <button class="tab" data-target="quiz">Quiz 🎯</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ================= IMPARFAIT ================= -->
+  <section class="panel active" id="imparfait">
+
+    <div class="card">
+      <h2><span class="emoji">🔍</span>À quoi sert l'imparfait ?</h2>
+      <p class="sub">Ses 4 valeurs principales à connaître par cœur.</p>
+
+      <div class="valeurs">
+        <div class="valeur">
+          <strong>1. La description</strong>
+          <span>Décor, personnages, ambiance. C'est l'arrière-plan du récit.</span>
+          <em>« Le ciel était gris et le vent soufflait. »</em>
+        </div>
+        <div class="valeur">
+          <strong>2. L'habitude</strong>
+          <span>Une action qui se répète, qui revient régulièrement.</span>
+          <em>« Chaque matin, il se levait à six heures. »</em>
+        </div>
+        <div class="valeur">
+          <strong>3. L'action en cours</strong>
+          <span>Une action qui dure, sans début ni fin précis. Souvent interrompue par une action au passé simple.</span>
+          <em>« Il lisait quand le téléphone sonna. »</em>
+        </div>
+        <div class="valeur">
+          <strong>4. L'hypothèse</strong>
+          <span>Après « si », pour exprimer une condition ou un souhait.</span>
+          <em>« Si j'avais des ailes, je volerais. »</em>
+        </div>
+      </div>
+
+      <div class="astuce">
+        <strong>💡 Astuce pour retenir</strong>
+        L'imparfait, c'est le temps du <b>« c'était comment ? »</b> : ça décrit, ça dure, ça se répète. Il ne fait jamais avancer l'action.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">🛠️</span>Comment le former ?</h2>
+      <p class="sub">Une seule règle pour presque tous les verbes.</p>
+
+      <p><strong>Radical du « nous » au présent + terminaisons de l'imparfait.</strong></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Personne</th><th>Terminaison</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="pron">je</td><td class="form">-ais</td></tr>
+            <tr><td class="pron">tu</td><td class="form">-ais</td></tr>
+            <tr><td class="pron">il / elle / on</td><td class="form">-ait</td></tr>
+            <tr><td class="pron">nous</td><td class="form">-ions</td></tr>
+            <tr><td class="pron">vous</td><td class="form">-iez</td></tr>
+            <tr><td class="pron">ils / elles</td><td class="form">-aient</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Exemples de formation</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Verbe</th><th>Nous + présent</th><th>Imparfait</th></tr></thead>
+          <tbody>
+            <tr><td>chanter</td><td>nous chant<b>ons</b></td><td class="form">je chantais</td></tr>
+            <tr><td>finir</td><td>nous finiss<b>ons</b></td><td class="form">je finissais</td></tr>
+            <tr><td>prendre</td><td>nous pren<b>ons</b></td><td class="form">je prenais</td></tr>
+            <tr><td>faire</td><td>nous fais<b>ons</b></td><td class="form">je faisais</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="astuce orange">
+        <strong>⚠️ Une seule exception</strong>
+        Le verbe <b>être</b> : le radical est <b>ét-</b> → j'étais, tu étais, il était, nous étions, vous étiez, ils étaient.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">📖</span>Conjugaison complète</h2>
+      <p class="sub">Clique sur un verbe pour voir sa conjugaison à l'imparfait.</p>
+      <div class="conjugueur" data-tense="imparfait"></div>
+    </div>
+
+  </section>
+
+  <!-- ================= PASSE SIMPLE ================= -->
+  <section class="panel" id="passe-simple">
+
+    <div class="card">
+      <h2><span class="emoji">⚡</span>À quoi sert le passé simple ?</h2>
+      <p class="sub">Le temps des actions qui font avancer l'histoire.</p>
+
+      <div class="valeurs">
+        <div class="valeur ps">
+          <strong>1. L'action ponctuelle</strong>
+          <span>Une action brève, unique, qui arrive une seule fois.</span>
+          <em>« Soudain, le dragon surgit. »</em>
+        </div>
+        <div class="valeur ps">
+          <strong>2. Les actions successives</strong>
+          <span>Des actions qui s'enchaînent, l'une après l'autre, au premier plan.</span>
+          <em>« Il se leva, prit son épée et sortit. »</em>
+        </div>
+        <div class="valeur ps">
+          <strong>3. L'action délimitée</strong>
+          <span>Une action avec un début et une fin clairs, achevée.</span>
+          <em>« Il régna trente ans. »</em>
+        </div>
+        <div class="valeur ps">
+          <strong>4. L'action de premier plan</strong>
+          <span>C'est l'événement important du récit, celui qu'on raconte.</span>
+          <em>« La porte claqua. »</em>
+        </div>
+      </div>
+
+      <div class="astuce orange">
+        <strong>💡 Astuce pour retenir</strong>
+        Le passé simple, c'est le temps du <b>« et puis ? »</b> : ça avance, ça frappe, ça raconte l'action. On le trouve surtout à l'écrit (contes, romans).
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">🛠️</span>Les terminaisons</h2>
+      <p class="sub">Il y a trois séries à connaître, selon le groupe du verbe.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Personne</th><th>1ᵉʳ groupe (-er)</th><th>2ᵉ groupe (-ir)</th><th>3ᵉ groupe (en -is / -us)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="pron">je</td><td class="form">-ai</td><td class="form">-is</td><td class="form">-is / -us</td></tr>
+            <tr><td class="pron">tu</td><td class="form">-as</td><td class="form">-is</td><td class="form">-is / -us</td></tr>
+            <tr><td class="pron">il / elle</td><td class="form">-a</td><td class="form">-it</td><td class="form">-it / -ut</td></tr>
+            <tr><td class="pron">nous</td><td class="form">-âmes</td><td class="form">-îmes</td><td class="form">-îmes / -ûmes</td></tr>
+            <tr><td class="pron">vous</td><td class="form">-âtes</td><td class="form">-îtes</td><td class="form">-îtes / -ûtes</td></tr>
+            <tr><td class="pron">ils / elles</td><td class="form">-èrent</td><td class="form">-irent</td><td class="form">-irent / -urent</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Les verbes en -is (3ᵉ groupe)</h3>
+      <p>partir, prendre, mettre, faire, voir, dire, écrire, comprendre…</p>
+
+      <h3>Les verbes en -us (3ᵉ groupe)</h3>
+      <p>pouvoir, vouloir, savoir, devoir, croire, boire, vivre, lire, recevoir…</p>
+
+      <div class="astuce">
+        <strong>🔎 Les terminaisons à ne jamais confondre</strong>
+        <b>-èrent</b> (ils parlèrent) · <b>-irent</b> (ils finirent) · <b>-urent</b> (ils purent)<br>
+        Les trois se ressemblent : <b>le « u » change tout !</b>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">⭐</span>Les verbes irréguliers à connaître</h2>
+      <p class="sub">Ce sont ceux qui tombent le plus souvent en contrôle.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Verbe</th><th>je</th><th>il / elle</th><th>nous</th><th>ils / elles</th></tr></thead>
+          <tbody>
+            <tr><td><b>être</b></td><td class="form">je fus</td><td class="form">il fut</td><td class="form">nous fûmes</td><td class="form">ils furent</td></tr>
+            <tr><td><b>avoir</b></td><td class="form">j'eus</td><td class="form">il eut</td><td class="form">nous eûmes</td><td class="form">ils eurent</td></tr>
+            <tr><td><b>faire</b></td><td class="form">je fis</td><td class="form">il fit</td><td class="form">nous fîmes</td><td class="form">ils firent</td></tr>
+            <tr><td><b>aller</b></td><td class="form">j'allai</td><td class="form">il alla</td><td class="form">nous allâmes</td><td class="form">ils allèrent</td></tr>
+            <tr><td><b>venir</b></td><td class="form">je vins</td><td class="form">il vint</td><td class="form">nous vînmes</td><td class="form">ils vinrent</td></tr>
+            <tr><td><b>voir</b></td><td class="form">je vis</td><td class="form">il vit</td><td class="form">nous vîmes</td><td class="form">ils virent</td></tr>
+            <tr><td><b>pouvoir</b></td><td class="form">je pus</td><td class="form">il put</td><td class="form">nous pûmes</td><td class="form">ils purent</td></tr>
+            <tr><td><b>prendre</b></td><td class="form">je pris</td><td class="form">il prit</td><td class="form">nous prîmes</td><td class="form">ils prirent</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="astuce orange">
+        <strong>⚠️ Attention aux accents !</strong>
+        <b>nous</b> et <b>vous</b> portent toujours un accent circonflexe : nous parl<b>â</b>mes, nous fin<b>î</b>mes, nous e<b>û</b>mes.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">📖</span>Conjugaison complète</h2>
+      <p class="sub">Clique sur un verbe pour voir sa conjugaison au passé simple.</p>
+      <div class="conjugueur" data-tense="passeSimple"></div>
+    </div>
+
+  </section>
+
+  <!-- ================= COMPARER ================= -->
+  <section class="panel" id="comparer">
+
+    <div class="card">
+      <h2><span class="emoji">⚖️</span>Imparfait ou passé simple ?</h2>
+      <p class="sub">Le tableau à retenir pour ne plus se tromper.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th></th><th>Imparfait</th><th>Passé simple</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Rôle</b></td>
+              <td>Arrière-plan (le décor)</td>
+              <td>Premier plan (l'action)</td>
+            </tr>
+            <tr>
+              <td><b>Durée</b></td>
+              <td>Ça dure, ça n'a pas de limites</td>
+              <td>C'est bref, c'est délimité</td>
+            </tr>
+            <tr>
+              <td><b>Répétition</b></td>
+              <td>Ça se répète (habitude)</td>
+              <td>Ça arrive une seule fois</td>
+            </tr>
+            <tr>
+              <td><b>Enchaînement</b></td>
+              <td>Les actions sont simultanées</td>
+              <td>Les actions se succèdent</td>
+            </tr>
+            <tr>
+              <td><b>Question test</b></td>
+              <td>« C'était comment ? »</td>
+              <td>« Et puis, qu'est-ce qui s'est passé ? »</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">✍️</span>Un exemple pour tout comprendre</h2>
+      <p class="sub">Les verbes à l'imparfait sont en violet, ceux au passé simple en orange.</p>
+
+      <div class="exemple">
+        Ce jour-là, le soleil <span class="imp">brillait</span> dans un ciel sans nuages.
+        Les oiseaux <span class="imp">chantaient</span> et les enfants <span class="imp">jouaient</span> dans la cour.
+        Soudain, un cri <span class="ps">retentit</span>.
+        Marie <span class="ps">se retourna</span> et <span class="ps">vit</span> un chien qui <span class="imp">courait</span> vers elle.
+        Elle <span class="ps">prit</span> ses jambes à son cou et <span class="ps">rentra</span> chez elle.
+      </div>
+
+      <div class="legende">
+        <span class="l-imp">Imparfait → décor, description, action en cours</span>
+        <span class="l-ps">Passé simple → actions qui font avancer le récit</span>
+      </div>
+
+      <div class="astuce">
+        <strong>🎯 La méthode en 3 étapes</strong>
+        1. Je repère le verbe. <br>
+        2. Je me demande : est-ce que ça décrit / dure / se répète ? → <b>imparfait</b>.<br>
+        3. Est-ce que c'est une action brève, unique, qui fait avancer l'histoire ? → <b>passé simple</b>.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">🧠</span>Le piège classique du brevet</h2>
+      <p class="sub">La phrase avec « quand » ou « lorsque ».</p>
+
+      <div class="exemple" style="font-size:.97rem;">
+        Il <span class="imp">marchait</span> depuis une heure <b>quand</b> il <span class="ps">arriva</span> au village.
+      </div>
+
+      <p style="margin-top:14px;">
+        L'imparfait (<b>marchait</b>) décrit l'action en cours, qui dure. Le passé simple (<b>arriva</b>) marque l'événement qui interrompt cette action.
+      </p>
+
+      <div class="astuce orange">
+        <strong>⚠️ Ne confonds pas !</strong>
+        On écrit <b>« quand »</b> ou <b>« lorsque »</b> (pas « qu'en »). Et après ces mots, on trouve très souvent un passé simple.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section class="panel" id="quiz">
+    <div class="card" id="quiz-box"></div>
+  </section>
+
+</main>
+
+<footer>
+  Fait pour réviser le français en 3ᵉ · Bon courage ! 💪
+</footer>
+
+<script>
+/* =========================================================
+   DONNÉES DE CONJUGAISON
+   ========================================================= */
+const CONJ = {
+  "parler": {
+    groupe: "1ᵉʳ groupe",
+    imparfait: [["je","parlais"],["tu","parlais"],["il / elle","parlait"],["nous","parlions"],["vous","parliez"],["ils / elles","parlaient"]],
+    passeSimple: [["je","parlai"],["tu","parlas"],["il / elle","parla"],["nous","parlâmes"],["vous","parlâtes"],["ils / elles","parlèrent"]]
+  },
+  "finir": {
+    groupe: "2ᵉ groupe",
+    imparfait: [["je","finissais"],["tu","finissais"],["il / elle","finissait"],["nous","finissions"],["vous","finissiez"],["ils / elles","finissaient"]],
+    passeSimple: [["je","finis"],["tu","finis"],["il / elle","finit"],["nous","finîmes"],["vous","finîtes"],["ils / elles","finirent"]]
+  },
+  "être": {
+    groupe: "3ᵉ groupe (irrégulier)",
+    imparfait: [["j'","étais"],["tu","étais"],["il / elle","était"],["nous","étions"],["vous","étiez"],["ils / elles","étaient"]],
+    passeSimple: [["je","fus"],["tu","fus"],["il / elle","fut"],["nous","fûmes"],["vous","fûtes"],["ils / elles","furent"]]
+  },
+  "avoir": {
+    groupe: "3ᵉ groupe (irrégulier)",
+    imparfait: [["j'","avais"],["tu","avais"],["il / elle","avait"],["nous","avions"],["vous","aviez"],["ils / elles","avaient"]],
+    passeSimple: [["j'","eus"],["tu","eus"],["il / elle","eut"],["nous","eûmes"],["vous","eûtes"],["ils / elles","eurent"]]
+  },
+  "faire": {
+    groupe: "3ᵉ groupe",
+    imparfait: [["je","faisais"],["tu","faisais"],["il / elle","faisait"],["nous","faisions"],["vous","faisiez"],["ils / elles","faisaient"]],
+    passeSimple: [["je","fis"],["tu","fis"],["il / elle","fit"],["nous","fîmes"],["vous","fîtes"],["ils / elles","firent"]]
+  },
+  "aller": {
+    groupe: "3ᵉ groupe",
+    imparfait: [["j'","allais"],["tu","allais"],["il / elle","allait"],["nous","allions"],["vous","alliez"],["ils / elles","allaient"]],
+    passeSimple: [["j'","allai"],["tu","allas"],["il / elle","alla"],["nous","allâmes"],["vous","allâtes"],["ils / elles","allèrent"]]
+  },
+  "prendre": {
+    groupe: "3ᵉ groupe",
+    imparfait: [["je","prenais"],["tu","prenais"],["il / elle","prenait"],["nous","prenions"],["vous","preniez"],["ils / elles","prenaient"]],
+    passeSimple: [["je","pris"],["tu","pris"],["il / elle","prit"],["nous","prîmes"],["vous","prîtes"],["ils / elles","prirent"]]
+  },
+  "venir": {
+    groupe: "3ᵉ groupe",
+    imparfait: [["je","venais"],["tu","venais"],["il / elle","venait"],["nous","venions"],["vous","veniez"],["ils / elles","venaient"]],
+    passeSimple: [["je","vins"],["tu","vins"],["il / elle","vint"],["nous","vînmes"],["vous","vîntes"],["ils / elles","vinrent"]]
+  },
+  "voir": {
+    groupe: "3ᵉ groupe",
+    imparfait: [["je","voyais"],["tu","voyais"],["il / elle","voyait"],["nous","voyions"],["vous","voyiez"],["ils / elles","voyaient"]],
+    passeSimple: [["je","vis"],["tu","vis"],["il / elle","vit"],["nous","vîmes"],["vous","vîtes"],["ils / elles","virent"]]
+  },
+  "pouvoir": {
+    groupe: "3ᵉ groupe",
+    imparfait: [["je","pouvais"],["tu","pouvais"],["il / elle","pouvait"],["nous","pouvions"],["vous","pouviez"],["ils / elles","pouvaient"]],
+    passeSimple: [["je","pus"],["tu","pus"],["il / elle","put"],["nous","pûmes"],["vous","pûtes"],["ils / elles","purent"]]
+  }
+};
+
+/* =========================================================
+   CONJUGUEUR
+   ========================================================= */
+function joindre(pron, forme){
+  return pron.endsWith("'") ? pron + forme : pron + " " + forme;
+}
+
+document.querySelectorAll(".conjugueur").forEach(root => {
+  const tense = root.dataset.tense;
+  const label = tense === "imparfait" ? "Imparfait" : "Passé simple";
+  const verbes = Object.keys(CONJ);
+  let courant = verbes[0];
+
+  root.innerHTML = `
+    <div class="chips ${tense === "passeSimple" ? "ps" : ""}"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Personne</th><th>${label}</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="conj-note"></p>
+  `;
+
+  const chipsEl = root.querySelector(".chips");
+  const tbodyEl = root.querySelector("tbody");
+  const noteEl = root.querySelector(".conj-note");
+
+  verbes.forEach(v => {
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.textContent = v;
+    b.onclick = () => { courant = v; dessiner(); };
+    chipsEl.appendChild(b);
+  });
+
+  function dessiner(){
+    [...chipsEl.children].forEach(c => c.classList.toggle("active", c.textContent === courant));
+    const data = CONJ[courant][tense];
+    tbodyEl.innerHTML = data.map(([p, f]) =>
+      `<tr><td class="pron">${p}</td><td class="form">${joindre(p, f)}</td></tr>`
+    ).join("");
+    noteEl.innerHTML = `<b>${courant}</b> — ${CONJ[courant].groupe}`;
+  }
+
+  dessiner();
+});
+
+/* =========================================================
+   ONGLETS
+   ========================================================= */
+const tabs = document.querySelectorAll(".tab");
+const panels = document.querySelectorAll(".panel");
+
+tabs.forEach(t => {
+  t.addEventListener("click", () => {
+    tabs.forEach(x => x.classList.remove("active"));
+    panels.forEach(p => p.classList.remove("active"));
+    t.classList.add("active");
+    document.getElementById(t.dataset.target).classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
+/* =========================================================
+   QUIZ
+   ========================================================= */
+const QUESTIONS = [
+  {
+    text: "Chaque matin, il <b>se levait</b> à six heures.",
+    question: "Quelle est la valeur de l'imparfait dans cette phrase ?",
+    options: [
+      "Une action habituelle, répétée",
+      "Une action ponctuelle",
+      "Une description du décor",
+      "Une hypothèse"
+    ],
+    correct: 0,
+    expl: "« Chaque matin » indique une répétition : l'imparfait exprime ici une habitude."
+  },
+  {
+    text: "Le ciel <b>était</b> gris et le vent <b>soufflait</b> doucement.",
+    question: "Quelle est la valeur de l'imparfait ici ?",
+    options: [
+      "Une action qui fait avancer le récit",
+      "Une description (le décor de l'histoire)",
+      "Une action unique et brève",
+      "Une action délimitée dans le temps"
+    ],
+    correct: 1,
+    expl: "L'imparfait sert à décrire le décor, l'ambiance : c'est l'arrière-plan du récit."
+  },
+  {
+    text: "Soudain, le dragon <b>surgit</b> de la caverne.",
+    question: "Pourquoi le verbe est-il au passé simple ?",
+    options: [
+      "Parce qu'il décrit un personnage",
+      "Parce que l'action se répète",
+      "Parce que c'est une action ponctuelle, de premier plan",
+      "Parce qu'il exprime une hypothèse"
+    ],
+    correct: 2,
+    expl: "« Soudain » + une action brève et unique = passé simple. C'est l'événement qui fait avancer le récit."
+  },
+  {
+    text: "Il ______ quand je ______ de chez moi.",
+    question: "Quelle est la bonne combinaison ?",
+    options: [
+      "pleuvait / sortis",
+      "plut / sortais",
+      "pleuvait / sortais",
+      "plut / sortis"
+    ],
+    correct: 0,
+    expl: "La pluie dure (imparfait : « pleuvait ») et elle est interrompue par une action brève (passé simple : « sortis »)."
+  },
+  {
+    text: "Nous (finir) ______ notre repas avant de partir.",
+    question: "Quelle est la forme correcte au passé simple ?",
+    options: ["nous finissions", "nous finîmes", "nous finissons", "nous finirons"],
+    correct: 1,
+    expl: "Verbe du 2ᵉ groupe : les terminaisons sont -is, -is, -it, -îmes, -îtes, -irent. Donc « nous finîmes »."
+  },
+  {
+    text: "Ils (être) ______ déjà partis quand nous sommes arrivés.",
+    question: "Quelle est la forme correcte à l'imparfait ?",
+    options: ["ils furent", "ils étaient", "ils soient", "ils seraient"],
+    correct: 1,
+    expl: "À l'imparfait, « être » a le radical ét- : j'étais, tu étais, il était, nous étions, vous étiez, ils étaient."
+  },
+  {
+    question: "Quelle est la forme du verbe « avoir » au passé simple, à la 3ᵉ personne du singulier ?",
+    options: ["il eut", "il eu", "il avait", "il a eu"],
+    correct: 0,
+    expl: "« Avoir » au passé simple : j'eus, tu eus, il eut, nous eûmes, vous eûtes, ils eurent."
+  },
+  {
+    text: "Le chevalier (saisir) ______ son épée et (frapper) ______ le monstre.",
+    question: "Quelles sont les formes correctes au passé simple ?",
+    options: [
+      "saisissait / frappait",
+      "saisit / frappa",
+      "saisira / frappera",
+      "saisis / frappas"
+    ],
+    correct: 1,
+    expl: "Ce sont des actions successives et brèves : passé simple. « saisir » (2ᵉ groupe) → il saisit ; « frapper » (1ᵉʳ groupe) → il frappa."
+  },
+  {
+    question: "Quelle est la forme correcte du verbe « faire » à l'imparfait, avec « nous » ?",
+    options: ["nous faisons", "nous fîmes", "nous faisions", "nous ferions"],
+    correct: 2,
+    expl: "Radical de « nous faisons » + terminaison -ions → « nous faisions ». Attention à ne pas confondre avec « nous fîmes » (passé simple)."
+  },
+  {
+    question: "Quelle est la forme correcte du verbe « prendre » au passé simple, avec « vous » ?",
+    options: ["vous preniez", "vous prîtes", "vous prendrez", "vous prites"],
+    correct: 1,
+    expl: "« Prendre » au passé simple : je pris, tu pris, il prit, nous prîmes, vous prîtes, ils prirent. L'accent circonflexe est obligatoire."
+  },
+  {
+    text: "Il <b>lisait</b> tranquillement lorsque le téléphone <b>sonna</b>.",
+    question: "Que exprime le verbe « lisait » ?",
+    options: [
+      "Une action en cours, interrompue par une autre",
+      "Une habitude qui se répète",
+      "Une action qui se déroule après « sonna »",
+      "Une hypothèse"
+    ],
+    correct: 0,
+    expl: "L'imparfait décrit l'action en cours et le passé simple (« sonna ») marque l'événement qui l'interrompt."
+  },
+  {
+    question: "Quelle est la terminaison du passé simple, 1ᵉʳ groupe, à la 3ᵉ personne du pluriel ?",
+    options: ["-aient", "-èrent", "-irent", "-urent"],
+    correct: 1,
+    expl: "1ᵉʳ groupe au passé simple : -ai, -as, -a, -âmes, -âtes, -èrent. Ex. : ils parlèrent."
+  },
+  {
+    text: "Si j'<b>avais</b> des ailes, je volerais.",
+    question: "Quelle est la valeur de l'imparfait ici ?",
+    options: [
+      "Une action habituelle",
+      "Une description",
+      "L'expression d'une hypothèse",
+      "Une action ponctuelle"
+    ],
+    correct: 2,
+    expl: "Après « si », l'imparfait exprime l'hypothèse (avec le conditionnel dans l'autre partie de la phrase)."
+  },
+  {
+    text: "Ils (venir) ______ nous voir le lendemain.",
+    question: "Quelle est la forme correcte au passé simple ?",
+    options: ["ils venaient", "ils vinrent", "ils viendront", "ils virent"],
+    correct: 1,
+    expl: "« Venir » au passé simple : je vins, tu vins, il vint, nous vînmes, vous vîntes, ils vinrent."
+  },
+  {
+    question: "Quelles sont les terminaisons de l'imparfait (pour tous les verbes sauf « être ») ?",
+    options: [
+      "-ai, -as, -a, -âmes, -âtes, -èrent",
+      "-ais, -ais, -ait, -ions, -iez, -aient",
+      "-is, -is, -it, -îmes, -îtes, -irent",
+      "-erai, -eras, -era, -erons, -erez, -eront"
+    ],
+    correct: 1,
+    expl: "Les terminaisons de l'imparfait sont toujours : -ais, -ais, -ait, -ions, -iez, -aient, quel que soit le groupe du verbe."
+  }
+];
+
+const quizBox = document.getElementById("quiz-box");
+
+function melanger(tab){
+  for (let i = tab.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [tab[i], tab[j]] = [tab[j], tab[i]];
+  }
+  return tab;
+}
+
+let etat = { questions: [], index: 0, score: 0, repondu: false };
+
+function preparer(){
+  return QUESTIONS.map(q => {
+    const opts = q.options.map((t, i) => ({ t, ok: i === q.correct }));
+    melanger(opts);
+    return {
+      text: q.text,
+      question: q.question,
+      options: opts.map(o => o.t),
+      correct: opts.findIndex(o => o.ok),
+      expl: q.expl
+    };
+  });
+}
+
+function ecranIntro(){
+  quizBox.innerHTML = `
+    <div class="intro-quiz">
+      <div class="ico">🎯</div>
+      <h2>Quiz : imparfait ou passé simple ?</h2>
+      <p>15 questions pour tester tes connaissances sur les valeurs et les conjugaisons. Tu auras une explication après chaque réponse !</p>
+      <button class="btn" id="btn-start">Commencer le quiz</button>
+    </div>
+  `;
+  document.getElementById("btn-start").onclick = lancer;
+}
+
+function lancer(){
+  etat.questions = melanger(preparer());
+  etat.index = 0;
+  etat.score = 0;
+  etat.repondu = false;
+  afficherQuestion();
+}
+
+function afficherQuestion(){
+  const q = etat.questions[etat.index];
+  const total = etat.questions.length;
+  const pct = (etat.index / total) * 100;
+
+  quizBox.innerHTML = `
+    <div class="quiz-top">
+      <span>Question ${etat.index + 1} / ${total}</span>
+      <span class="quiz-score">Score : ${etat.score}</span>
+    </div>
+    <div class="progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+
+    ${q.text ? `<div class="quiz-text">${q.text}</div>` : ""}
+    <p class="quiz-question">${q.question}</p>
+    <div class="options" id="options"></div>
+    <div id="feedback"></div>
+  `;
+
+  const zone = document.getElementById("options");
+  q.options.forEach((opt, i) => {
+    const b = document.createElement("button");
+    b.className = "option";
+    b.type = "button";
+    b.innerHTML = `<span>${opt}</span>`;
+    b.onclick = () => repondre(i, b);
+    zone.appendChild(b);
+  });
+}
+
+function repondre(choix, btn){
+  if (etat.repondu) return;
+  etat.repondu = true;
+
+  const q = etat.questions[etat.index];
+  const boutons = document.querySelectorAll(".option");
+
+  boutons.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("correct");
+  });
+
+  const juste = choix === q.correct;
+  if (juste){
+    etat.score++;
+  } else {
+    btn.classList.add("wrong");
+  }
+
+  document.querySelector(".quiz-score").textContent = "Score : " + etat.score;
+
+  const dernier = etat.index === etat.questions.length - 1;
+  const fb = document.getElementById("feedback");
+  fb.innerHTML = `
+    <div class="feedback ${juste ? "ok" : "ko"}">
+      <strong>${juste ? "✅ Bravo, c'est ça !" : "❌ Pas tout à fait…"}</strong>
+      <p>${q.expl}</p>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="btn-next">${dernier ? "Voir mon score" : "Question suivante →"}</button>
+    </div>
+  `;
+  document.getElementById("btn-next").onclick = suivant;
+}
+
+function suivant(){
+  etat.index++;
+  etat.repondu = false;
+  if (etat.index >= etat.questions.length){
+    ecranFin();
+  } else {
+    afficherQuestion();
+  }
+}
+
+function ecranFin(){
+  const total = etat.questions.length;
+  const pct = Math.round((etat.score / total) * 100);
+
+  let titre, message;
+  if (pct === 100){
+    titre = "Parfait ! 🏆";
+    message = "Tu maîtrises l'imparfait et le passé simple sur le bout des doigts. Bravo !";
+  } else if (pct >= 80){
+    titre = "Excellent ! 🎉";
+    message = "Très bon niveau. Relis juste les questions ratées pour être au top.";
+  } else if (pct >= 60){
+    titre = "Pas mal ! 👍";
+    message = "C'est en bonne voie. Revois les valeurs et les terminaisons, puis retente le quiz.";
+  } else if (pct >= 40){
+    titre = "À revoir 📚";
+    message = "Relis attentivement les onglets « L'imparfait » et « Le passé simple », puis recommence.";
+  } else {
+    titre = "On reprend depuis le début 💪";
+    message = "Pas de panique ! Relis les fiches et les tableaux de conjugaison, puis retente le quiz. Ça va venir.";
+  }
+
+  quizBox.innerHTML = `
+    <div class="resultat">
+      <div class="score-big">${etat.score}<small> / ${total}</small></div>
+      <div class="barre"><div style="width:${pct}%"></div></div>
+      <h3 style="margin-top:18px;">${titre}</h3>
+      <p>${message}</p>
+      <div class="btn-row" style="justify-content:center;">
+        <button class="btn" id="btn-rejouer">Recommencer le quiz</button>
+        <button class="btn ghost" id="btn-revoir">Revoir les fiches</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("btn-rejouer").onclick = lancer;
+  document.getElementById("btn-revoir").onclick = () => {
+    document.querySelector('.tab[data-target="imparfait"]').click();
+  };
+}
+
+ecranIntro();
+</script>
+
+</body>
+</html>
